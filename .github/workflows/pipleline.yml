@@ -14,8 +14,11 @@ jobs:
       - name: Descargar repositorio
         uses: actions/checkout@v5
 
-      - name: Comprobar archivos
+      - name: Comprobar Dockerfile
         run: |
           pwd
           ls -la
-          find . -maxdepth 3 -name Dockerfile
+          test -f Dockerfile
+
+      - name: Construir imagen Docker
+        run: docker build -t ipod_classic_image .
