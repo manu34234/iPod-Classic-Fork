@@ -1,14 +1,22 @@
-name: nombre del pipeline
+
+name: Pipeline Docker
+
 on:
   push:
-    branches: [ "main" ]
+    branches: [main]
   workflow_dispatch:
 
 jobs:
-  echo-job:
-    name: Run Echo Commands
-    runs-on: self-hosted
- 
+  build:
+    runs-on: ubuntu-latest
+
     steps:
-      - name: Step 1 - Build image
-        run: docker build -t ipod_classic_image .
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Comprobar archivos
+        run: |
+          pwd
+          ls -la
+          find . -maxdepth 3 -name Dockerfile
+```
