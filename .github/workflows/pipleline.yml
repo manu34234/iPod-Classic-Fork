@@ -1,0 +1,14 @@
+name: nombre del pipeline
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  echo-job:
+    name: Run Echo Commands
+    runs-on: self-hosted
+ 
+    steps:
+      - name: Step 1 - Build image
+        run: docker build -t ipod_classic_image .
