@@ -1,24 +1,19 @@
 
-name: Pipeline Docker
+name: nombre del pipeline
 
 on:
   push:
-    branches: [main]
+    branches: [ "main" ]
   workflow_dispatch:
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  echo-job:
+    name: Run Echo Commands
+    runs-on: self-hosted
 
     steps:
       - name: Descargar repositorio
         uses: actions/checkout@v5
 
-      - name: Comprobar Dockerfile
-        run: |
-          pwd
-          ls -la
-          test -f Dockerfile
-
-      - name: Construir imagen Docker
+      - name: Step 1 - Build image
         run: docker build -t ipod_classic_image .
